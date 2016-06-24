@@ -3,8 +3,12 @@ filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'VundleVim/Vundle.vim'
 Bundle 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'kien/ctrlp.vim'                   " 文件查找
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -42,7 +46,7 @@ set backspace=indent,eol,start
                             " 不设定在插入状态无法用退格键和 Delete 键删除回车符
 set cmdheight=1             " 设定命令行的行数为 1
 set laststatus=2            " 显示状态栏 (默认值为 1, 无法显示状态栏)
-"set foldenable              " 开始折叠
+set foldenable              " 开始折叠
 set fdm=syntax
 set foldmethod=indent "设置代码折叠方式为 手工  indent
 set foldlevel=100            " 启动vim时不要自动折叠代码
@@ -57,9 +61,16 @@ set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<
 "set list
 
+au BufNewFile,BufRead *.py 
+\ set autoindent
+
 "编辑vim配置文件
 set fileformats=unix,dos,mac
 nmap <Leader>e :tabnew $HOME/.vimrc<CR>
+
+nnoremap <space> za
+nmap <leader>p <C-p>
+
 "设置编译快捷键
 nmap <Leader>l :Tlist<CR>
 
@@ -69,7 +80,8 @@ map gp <ESC>:tabprevious<CR>
 map gw <C-w><C-w>
 
 " ycm 跳转命令
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "设置全选快捷键
 map <C-a> ggVG
@@ -103,9 +115,13 @@ endfunc
 " 添加python头
 map tt :call AddPythonHead()<CR>
 func AddPythonHead()
-    call append(0, "#!/usr/bin/evn python")
-    call append(1, "#-*- conding:utf8 -*-")
+    call append(0, "#!/usr/bin/env python")
+    call append(1, "#-*- coding:utf8 -*-")
 endfunc
+
+" 重新添加cscope
+map bg :!~/vip/gen_cscope.sh <CR>
+map gb :!cscope -Rbq <CR>
 
 "-----------------------------------------------------------------
 let Tlist_Show_One_File = 1            "
