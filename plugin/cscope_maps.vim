@@ -43,8 +43,8 @@ if has("cscope")
     " else add the database pointed to by environment variable 
     elseif $CSCOPE_DB != ""
         cs add $CSCOPE_DB
-    elseif filereadable("~/vip/cscope.out")
-        cs add ~/vip/cscope.out
+    elseif filereadable("/Users/grj/vip/cscope.out")
+        cs add /Users/grj/vip/cscope.out
     elseif filereadable("/data/vip/cscope.out")
         cs add /data/vip/cscope.out
     endif
