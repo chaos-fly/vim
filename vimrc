@@ -79,6 +79,7 @@ map gt <ESC>:tabnew .<CR>
 map gn <ESC>:tabnext<CR>
 map gp <ESC>:tabprevious<CR>
 map gw <C-w><C-w>
+map fg :vertical wincmd f<CR>
 
 " ycm 跳转命令
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -109,7 +110,7 @@ func CompileRun()
 		exec "!gol run %"
 	elseif &filetype == 'java'
 		exec 'echo "---------------------"'
-		exec "!javac  % && java %:r"
+		exec "!javac -cp /usr/local/lib/*.jar % && java %:r"
 	endif
 endfunc
 
@@ -121,7 +122,7 @@ func AddPythonHead()
 endfunc
 
 " 重新添加cscope
-map bg :!~/vip/gen_cscope.sh <CR>
+map bg :!/data/vip/gen_cscope.sh <CR>
 map gb :!cscope -Rbq <CR>
 
 "-----------------------------------------------------------------
@@ -186,6 +187,7 @@ set path+=~/vip/,../../,../,../../protocol,../../common
 
 " 表格 :VimwikiTable cols rows
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
 " 不进行语法检查
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_confirm_extra_conf = 0
