@@ -70,6 +70,7 @@ nmap <Leader>e :tabnew $HOME/.vimrc<CR>
 
 nnoremap <space> za
 nmap <leader>p <C-p>
+nmap <leader>o <C-o>
 
 "设置编译快捷键
 nmap <Leader>l :Tlist<CR>
