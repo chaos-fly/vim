@@ -183,7 +183,7 @@ let g:vimwiki_list = [
 :hi VimwikiHeader5 guifg=#00FFFF
 :hi VimwikiHeader6 guifg=#FFFF00
 
-set path+=~/vip/,../../,../,../../protocol,../../common
+set path+=/data/vip/,../../,../,../../protocol,../../common
 
 " 表格 :VimwikiTable cols rows
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
