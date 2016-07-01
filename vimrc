@@ -67,6 +67,7 @@ map gt <ESC>:tabnew .<CR>
 map gn <ESC>:tabnext<CR>
 map gp <ESC>:tabprevious<CR>
 map gw <C-w><C-w>
+map fg :vertical wincmd f<CR>
 
 " ycm 跳转命令
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -96,7 +97,7 @@ func CompileRun()
 		exec "!gol run %"
 	elseif &filetype == 'java'
 		exec 'echo "---------------------"'
-		exec "!javac  % && java %:r"
+		exec "!javac -cp /usr/local/lib/*.jar % && java %:r"
 	endif
 endfunc
 
@@ -104,8 +105,12 @@ endfunc
 map tt :call AddPythonHead()<CR>
 func AddPythonHead()
     call append(0, "#!/usr/bin/evn python")
-    call append(1, "#-*- conding:utf8 -*-")
+    call append(1, "#-*- coding:utf8 -*-")
 endfunc
+
+" 重新添加cscope
+map bg :!/data/vip/gen_cscope.sh <CR>
+map gb :!cscope -Rbq <CR>
 
 "-----------------------------------------------------------------
 let Tlist_Show_One_File = 1            "
@@ -169,6 +174,7 @@ set path+=~/vip/,../../,../,../../protocol,../../common
 
 " 表格 :VimwikiTable cols rows
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
 " 不进行语法检查
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_confirm_extra_conf = 0
