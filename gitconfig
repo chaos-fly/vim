@@ -15,3 +15,5 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+[core]
+	excludesfile = /Users/grj/.gitignore_global

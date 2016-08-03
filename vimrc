@@ -111,6 +111,9 @@ func CompileRun()
 	elseif &filetype == 'java'
 		exec 'echo "---------------------"'
 		exec "!javac -cp /usr/local/lib/*.jar % && java %:r"
+    elseif &filetype == 'markdown'
+        exec 'echo "---------md---------"'
+        exec '!open %'
 	endif
 endfunc
 
