@@ -9,6 +9,9 @@ Plugin 'VundleVim/Vundle.vim'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'kien/ctrlp.vim'                   " 文件查找
+Plugin 'mattn/emmet-vim'                  " html css
+Plugin 'marijnh/tern_for_vim'
+Plugin 'fatih/vim-go'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -107,14 +110,28 @@ func CompileRun()
 		exec "!bash %"
 	elseif &filetype == 'go'
 		exec 'echo "---------------------"'
-		exec "!gol run %"
+		exec "!go run %"
 	elseif &filetype == 'java'
 		exec 'echo "---------------------"'
 		exec "!javac -cp /usr/local/lib/*.jar % && java %:r"
     elseif &filetype == 'markdown'
         exec 'echo "---------md---------"'
         exec '!open %'
+    elseif &filetype == 'html'
+        exec 'echo "---------html---------"'
+        exec '!open %'
 	endif
+endfunc
+
+"go
+au FileType go nmap <leader>t <Plug>(go-test)
+map gk :call ComplileRun2()<CR>
+func ComplileRun2()
+	exec "w"
+    if &filetype == 'go'
+		exec 'echo "---------------------"'
+		exec "!go run *.go"
+    endif
 endfunc
 
 " 添加python头
@@ -191,9 +208,18 @@ set path+=/data/vip/,../../,../,../../protocol,../../common
 " 表格 :VimwikiTable cols rows
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
+" go
+let s:tlist_def_go_settings = 'go;g:enum;s:struct;u:union;t:type;' .
+                           \ 'v:variable;f:function'
+
 " 不进行语法检查
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_seed_identifiers_with_syntax = 1
 " 相对当前工作路径
 let g:ycm_filepath_completion_use_working_dir = 1
+let g:netrw_list_hide= '.*\.swp$,.DS_Store,,*.so,*.swp,*.zip,*.git,^\.\/$'
+
+" emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
