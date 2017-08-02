@@ -4,14 +4,14 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'plasticboy/vim-markdown'
 Plugin 'VundleVim/Vundle.vim'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'kien/ctrlp.vim'                   " 文件查找
+"Plugin 'kien/ctrlp.vim'                   " 文件查找
 Plugin 'mattn/emmet-vim'                  " html css
-Plugin 'marijnh/tern_for_vim'
-Plugin 'fatih/vim-go'
+"Plugin 'marijnh/tern_for_vim'
+"Plugin 'fatih/vim-go'
 call vundle#end()            " required
 filetype plugin indent on    " required
 

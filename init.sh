@@ -1,6 +1,13 @@
 #!/bin/bash
 
 cd ~/
+mkdir -p ~/.vim/doc
+mkdir -p ~/.vim/plugin
+
+# .gitconfig
+if [ ! -f .gitconfig ]; then
+    ln -s /data/myvim/gitconfig .gitconfig
+fi
 
 # .vimrc
 if [ ! -L .vimrc ];then
@@ -14,7 +21,7 @@ fi
 
 # .vim/doc
 if [ ! -L .vim/doc ];then
-    if [ -f .vim/doc ];then
+    if [ -d .vim/doc ];then
         echo "bak .vim/doc"
         mv .vim/doc .vim/doc_bak
     fi
@@ -23,11 +30,13 @@ fi
 
 # .vim/plugin
 if [ ! -L .vim/plugin ];then
-    if [ -f .vim/plugin ];then
+    if [ -d .vim/plugin ];then
         echo "bak .vim/plugin"
-        mv .vim/plugin .vim/plugin
+        mv .vim/plugin .vim/plugin_bak
     fi
     ln -s /data/myvim/plugin .vim/plugin
 fi
+
+#git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 
