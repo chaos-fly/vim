@@ -25,7 +25,7 @@ if [ ! -L .vim/doc ];then
         echo "bak .vim/doc"
         mv .vim/doc .vim/doc_bak
     fi
-    ln -s /data/myvim/doc .vim/doc
+    ln -s /data/myvim/doc_no_taglist .vim/doc
 fi
 
 # .vim/plugin
@@ -34,7 +34,7 @@ if [ ! -L .vim/plugin ];then
         echo "bak .vim/plugin"
         mv .vim/plugin .vim/plugin_bak
     fi
-    ln -s /data/myvim/plugin .vim/plugin
+    ln -s /data/myvim/plugin_no_taglist .vim/plugin
 fi
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
